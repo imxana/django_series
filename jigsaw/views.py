@@ -29,13 +29,22 @@ def api_test(request):
 
 
 def image_callback(request):
+    '''
+    callbackBody: filename should be unique
+    callbakUrl: ./api/image/callback
+    '''
     # if request.method != 'POST':
         # return json.dumps({'code':'0'})
     fname = request.POST.get('filename','') 
     if fname == '':
-        return json.dumps({'code':'0'})
+        return HttpResponse(json.dumps({'code':'0'}))
     url = 'https://oi3qt7c8d.qnssl.com/' + fname
-    return json.dumps({'code':'1','url':url}, indent=1)
+    return HttpResponse(json.dumps({'code':'1','url':url}))
+
+
+
+def image_query(request):
+    return HttpResponse('')
 
 
 
